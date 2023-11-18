@@ -11,21 +11,44 @@
 выведется результат: В массиве использовано 5 различных цифр
 */
 fun main() {
+    println("Программма преобразует введенное натуральное число из 10-ичной системы в двоичную")
+    var string:String=""
+    var checkeror=true
+    var i:Int=0
+    var j:Int=0
+    var arrTwoDimens =Array(i){ Array(j){ 0 } }
+    while (checkeror) {
+        print("Введите количество строк и столбцов (через пробел): ")
+        string = readln()
+        try {
+            var newstring =string.split(" ")
+            i = newstring[0].toInt()
+            j = newstring[1].toInt()
+            if (string == "") {
+                println("Строка пустая.")
+            }
+            else if(i<0||j<0){
+                println("Число не должно быть отрицательным")
+            }
+            else {
+                checkeror = false
+            }
+            for (i1 in 0..<i){
+                for(j1 in 0..<j) {println("Введите трехзначное число для ячейки [$i1,$j1]: ")
+                    arrTwoDimens[i1][j1] = readln().toInt()
+                }
+            }
+        }
+        catch (e:NumberFormatException){
+            println("Введите число")
+        }
+        catch (e:IndexOutOfBoundsException){
+            println("Введите число")
+        }
+    }
     var arrComparison = mutableListOf<Int>()
     var check = true
-    print("Введите количество строк и столбцов (через пробел): ")
-    var string = readln()
-    var newstring =string.split(" ")
-    var i = newstring[0].toInt()
-    var j = newstring[1].toInt()
     var count = 0
-    var arrTwoDimens =Array(i){ Array(j){ 0 } }
-    for (i1 in 0..<i){
-        for(j1 in 0..<j) {println("Введите трехзначное число для ячейки [$i1,$j1]: ")
-            arrTwoDimens[i1][j1] = readln().toInt()
-}
-    }
-
 for (k in 0..9) {
     for (i1 in 0..<i){
         for (j1 in 0..<j){
